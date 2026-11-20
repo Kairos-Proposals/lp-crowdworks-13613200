@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AT_DOG様へのご提案 | Kairos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --forest:#3A4A3F;
+    --forest-deep:#263228;
+    --mustard:#D9A94C;
+    --mustard-deep:#C08A2E;
+    --ivory:#F4EFE3;
+    --sage:#8EA083;
+    --charcoal:#3F4A49;
+    --clay:#C97B5F;
+    --white:#FFFDF8;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Noto Sans JP', sans-serif;
+    color:var(--charcoal);
+    background:var(--ivory);
+    line-height:1.85;
+    font-weight:400;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{
+    font-family:'Zen Maru Gothic', sans-serif;
+    font-weight:900;
+    color:var(--forest-deep);
+  }
+  a{text-decoration:none;}
+  img{max-width:100%;}
+  .wrap{
+    max-width:1080px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  /* ===== 肉球パーツ(CSS描画) ===== */
+  .paw{
+    position:absolute;
+    width:46px;
+    height:46px;
+    opacity:0.18;
+    pointer-events:none;
+  }
+  .paw::before{
+    content:"";
+    position:absolute;
+    width:26px;
+    height:22px;
+    background:currentColor;
+    border-radius:50%;
+    top:16px;
+    left:10px;
+  }
+  .paw span{position:absolute; width:12px; height:14px; background:currentColor; border-radius:50%;}
+  .paw span:nth-child(1){top:0; left:3px; transform:rotate(-12deg);}
+  .paw span:nth-child(2){top:-4px; left:17px;}
+  .paw span:nth-child(3){top:0; left:31px; transform:rotate(12deg);}
+  .paw span:nth-child(4){top:8px; left:-2px; transform:rotate(-20deg); width:10px; height:11px;}
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(217,169,76,0.25), transparent 40%),
+      radial-gradient(circle at 85% 75%, rgba(142,160,131,0.35), transparent 45%),
+      linear-gradient(160deg, var(--forest-deep) 0%, var(--forest) 55%, #4c5c45 100%);
+    overflow:hidden;
+    color:var(--ivory);
+    padding:120px 0 140px;
+  }
+  .hero .paw{color:var(--ivory);}
+  .hero-inner{
+    position:relative;
+    z-index:2;
+  }
+  .hero-tag{
+    display:inline-block;
+    font-size:0.8rem;
+    letter-spacing:0.25em;
+    background:rgba(244,239,227,0.1);
+    border:1px solid rgba(244,239,227,0.4);
+    padding:7px 18px;
+    border-radius:30px;
+    margin-bottom:28px;
+    font-weight:500;
+  }
+  .hero h1{
+    font-size:clamp(2.1rem, 5vw, 3.6rem);
+    line-height:1.5;
+    color:var(--ivory);
+    margin-bottom:28px;
+  }
+  .hero h1 em{
+    font-style:normal;
+    color:var(--mustard);
+    position:relative;
+  }
+  .hero p.lead{
+    font-size:1.05rem;
+    max-width:580px;
+    color:rgba(244,239,227,0.85);
+    margin-bottom:10px;
+  }
+  .hero .from{
+    margin-top:40px;
+    font-size:0.9rem;
+    color:rgba(244,239,227,0.6);
+    border-top:1px solid rgba(244,239,227,0.25);
+    padding-top:18px;
+    display:inline-block;
+  }
+
+  .hill{
+    position:absolute;
+    bottom:-2px; left:0; width:100%;
+    height:120px;
+    background:var(--ivory);
+    border-radius:52% 48% 0 0 / 100% 100% 0 0;
+    transform:scaleX(1.4);
+  }
+
+  /* ===== SECTION 共通 ===== */
+  section{
+    position:relative;
+    padding:100px 0;
+  }
+  .section-head{
+    text-align:center;
+    margin-bottom:60px;
+  }
+  .section-head .eyebrow{
+    display:block;
+    font-size:0.78rem;
+    letter-spacing:0.3em;
+    color:var(--sage);
+    font-weight:700;
+    margin-bottom:14px;
+  }
+  .section-head h2{
+    font-size:clamp(1.6rem, 3.6vw, 2.3rem);
+  }
+
+  /* ===== 理解セクション ===== */
+  .understand{
+    background:var(--white);
+  }
+  .understand-box{
+    background:linear-gradient(135deg, #fff, #faf5ea);
+    border:1px solid #e6dcc5;
+    border-radius:26px;
+    padding:50px 44px;
+    position:relative;
+    box-shadow:0 20px 40px -24px rgba(58,74,57,0.25);
+  }
+  .understand-box::before{
+    content:"🐾";
+    position:absolute;
+    top:-26px; left:40px;
+    font-size:2rem;
+    background:var(--mustard);
+    width:56px;height:56px;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 10px 20px -8px rgba(192,138,46,0.6);
+  }
+  .understand-box p{
+    font-size:1.02rem;
+    margin-bottom:18px;
+  }
+  .understand-box p:last-child{margin-bottom:0;}
+  .understand-box strong{
+    color:var(--clay);
+    font-weight:700;
+  }
+
+  /* ===== VALUE CARDS ===== */
+  .value{
+    background:var(--ivory);
+  }
+  .value-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:28px;
+  }
+  .value-card{
+    background:var(--white);
+    border-radius:20px;
+    padding:36px 28px;
+    border:1px solid #e9e1cc;
+    position:relative;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .value-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 22px 36px -22px rgba(58,74,57,0.35);
+  }
+  .value-num{
+    font-family:'Zen Maru Gothic', sans-serif;
+    font-size:0.85rem;
+    font-weight:700;
+    color:var(--mustard-deep);
+    letter-spacing:0.1em;
+    margin-bottom:14px;
+    display:block;
+  }
+  .value-card h3{
+    font-size:1.15rem;
+    margin-bottom:14px;
+    color:var(--forest-deep);
+  }
+  .value-card p{
+    font-size:0.92rem;
+    color:var(--charcoal);
+  }
+  .value-card.wide{grid-column:span 1;}
+
+  /* ===== SCHEDULE ===== */
+  .schedule{
+    background:var(--forest-deep);
+    color:var(--ivory);
+  }
+  .schedule .section-head h2{color:var(--ivory);}
+  .schedule .section-head .eyebrow{color:var(--mustard);}
+  .timeline{
+    display:grid;
+    grid-template-columns:repeat(5, 1fr);
+    gap:18px;
+    counter-reset:step;
+  }
+  .step{
+    background:rgba(244,239,227,0.06);
+    border:1px solid rgba(244,239,227,0.15);
+    border-radius:18px;
+    padding:28px 20px;
+    text-align:center;
+    position:relative;
+  }
+  .step::before{
+    counter-increment:step;
+    content:counter(step);
+    display:block;
+    width:40px;height:40px;
+    line-height:40px;
+    border-radius:50%;
+    background:var(--mustard);
+    color:var(--forest-deep);
+    font-weight:900;
+    font-family:'Zen Maru Gothic', sans-serif;
+    margin:0 auto 16px;
+  }
+  .step h4{
+    color:var(--ivory);
+    font-size:0.98rem;
+    margin-bottom:8px;
+  }
+  .step p{
+    font-size:0.82rem;
+    color:rgba(244,239,227,0.7);
+  }
+  .step time{
+    display:block;
+    margin-top:10px;
+    font-size:0.75rem;
+    color:var(--sage);
+    letter-spacing:0.05em;
+  }
+
+  /* ===== BUDGET NOTE ===== */
+  .budget{
+    background:var(--white);
+    text-align:center;
+  }
+  .budget-card{
+    max-width:640px;
+    margin:0 auto;
+    background:linear-gradient(135deg, #fff, #f7f1e3);
+    border:2px dashed var(--mustard);
+    border-radius:24px;
+    padding:48px 36px;
+  }
+  .budget-card .price{
+    font-family:'Zen Maru Gothic', sans-serif;
+    font-size:2.6rem;
+    color:var(--forest-deep);
+    font-weight:900;
+    margin:14px 0 6px;
+  }
+  .budget-card .price span{
+    font-size:1rem;
+    font-weight:500;
+    color:var(--charcoal);
+  }
+  .budget-card .note{
+    font-size:0.85rem;
+    color:var(--charcoal);
+    opacity:0.75;
+    margin-top:14px;
+  }
+
+  /* ===== CLOSING ===== */
+  .closing{
+    background:
+      radial-gradient(circle at 20% 30%, rgba(217,169,76,0.15), transparent 50%),
+      linear-gradient(160deg, var(--forest) 0%, var(--forest-deep) 100%);
+    color:var(--ivory);
+    text-align:center;
+    padding:120px 0;
+    position:relative;
+    overflow:hidden;
+  }
+  .closing .paw{color:var(--ivory);}
+  .closing h2{
+    color:var(--ivory);
+    font-size:clamp(1.7rem, 4vw, 2.5rem);
+    margin-bottom:24px;
+  }
+  .closing p{
+    max-width:560px;
+    margin:0 auto 40px;
+    color:rgba(244,239,227,0.82);
+  }
+  .cta-btn{
+    display:inline-block;
+    background:var(--mustard);
+    color:var(--forest-deep);
+    font-weight:700;
+    font-family:'Zen Maru Gothic', sans-serif;
+    padding:18px 48px;
+    border-radius:50px;
+    font-size:1.05rem;
+    box-shadow:0 20px 40px -16px rgba(217,169,76,0.7);
+    transition:transform .2s ease, background .2s ease;
+  }
+  .cta-btn:hover{
+    transform:translateY(-3px);
+    background:var(--mustard-deep);
+  }
+  .closing .signoff{
+    margin-top:56px;
+    font-size:0.82rem;
+    letter-spacing:0.15em;
+    color:rgba(244,239,227,0.5);
+  }
+
+  footer{
+    background:var(--forest-deep);
+    color:rgba(244,239,227,0.4);
+    text-align:center;
+    padding:26px 0;
+    font-size:0.78rem;
+    letter-spacing:0.08em;
+  }
+
+  @media (max-width: 860px){
+    .value-grid{grid-template-columns:repeat(2, 1fr);}
+    .timeline{grid-template-columns:repeat(2, 1fr);}
+  }
+  @media (max-width: 600px){
+    section{padding:72px 0;}
+    .hero{padding:100px 0 110px;}
+    .value-grid{grid-template-columns:1fr;}
+    .timeline{grid-template-columns:1fr;}
+    .understand-box{padding:40px 24px;}
+    .budget-card{padding:36px 22px;}
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="paw" style="top:14%; left:8%;"><span></span><span></span><span></span><span></span></div>
+  <div class="paw" style="top:68%; left:18%; transform:scale(0.7) rotate(20deg);"><span></span><span></span><span></span><span></span></div>
+  <div class="paw" style="top:30%; right:10%; transform:scale(1.3) rotate(-15deg);"><span></span><span></span><span></span><span></span></div>
+  <div class="paw" style="top:75%; right:16%; transform:scale(0.8);"><span></span><span></span><span></span><span></span></div>
+
+  <div class="wrap hero-inner">
+    <span class="hero-tag">PROPOSAL for AT_DOG 様</span>
+    <h1>歩く速さが変わっても、<br>愛される速さは変わらない。<br><em>老犬と家族が、安心して過ごせる居場所を。</em></h1>
+    <p class="lead">
+      ペットホテル・老犬施設の新規開業にあたり、Kairosよりホームページ制作のご提案をお送りいたします。
+      30〜60代のご家族が「ここなら任せられる」と感じられる、温もりのあるウェブサイトを一緒につくらせてください。
+    </p>
+    <span class="from">Kairos（Web制作・システム開発チーム）よりご提案</span>
+  </div>
+  <div class="hill"></div>
+</section>
+
+<section class="understand">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">UNDERSTANDING</span>
+      <h2>今回のご依頼、このように受け止めています</h2>
+    </div>
+    <div class="understand-box">
+      <p>
+        新規事業としてペットホテル・老犬施設を開設されるにあたり、<strong>「まずはしっかりとした顔となるサイトが欲しい」</strong>
+        というご要望を拝見しました。ワイヤーやラフ案は未定で、画像・文章も「あるものとないもの」が混在している段階とのこと。
+        だからこそ、最初の打ち合わせで構成そのものから一緒に組み立てていくことが大切だと考えています。
+      </p>
+      <p>
+        また、参考サイトとして挙げていただいたペットホテル・ドッグラン施設は、いずれも<strong>清潔感・安心感・温かみ</strong>を
+        丁寧に両立させたデザインでした。30〜60代のご家族層に向けては、派手さよりも「信頼できそう」という第一印象が何より重要だと理解しています。
+      </p>
+      <p>
+        さらに「納品後、自社でお知らせや店舗情報を追加できると嬉しい」というお声も、開業後の運用を見据えた非常に現実的なご要望です。
+        Kairosは、作って終わりではなく<strong>長く使い続けられる仕組み</strong>としてサイトをお渡しすることを大切にしています。
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="value">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">WHAT WE OFFER</span>
+      <h2>Kairosがご提供できること</h2>
+    </div>
+    <div class="value-grid">
+      <div class="value-card">
+        <span class="value-num">01</span>
+        <h3>ゼロからの構成設計</h3>
+        <p>ワイヤーやラフ案がない状態からでも大丈夫です。開業への想い・施設の強み・ターゲットのご家族像を伺いながら、ページ構成そのものをご一緒に設計します。</p>
+      </div>
+      <div class="value-card">
+        <span class="value-num">02</span>
+        <h3>30〜60代に届くデザイン</h3>
+        <p>参考サイトのトーンを踏まえ、清潔感と温もりを両立した配色・写真の見せ方を設計。安心して預けられる施設であることを、見た瞬間に伝えます。</p>
+      </div>
+      <div class="value-card">
+        <span class="value-num">03</span>
+        <h3>自社で更新できる仕組み</h3>
+        <p>お知らせの追加や店舗情報の編集など、納品後に専門知識がなくても更新できる管理画面をご用意。長く付き合えるサイトにします。</p>
+      </div>
+      <div class="value-card">
+        <span class="value-num">04</span>
+        <h3>チラシ制作も一括対応</h3>
+        <p>オンラインとオフライン、両方の第一印象をそろえるため、ホームページと世界観を統一したチラシデザインも別途承れます。</p>
+      </div>
+      <div class="value-card">
+        <span class="value-num">05</span>
+        <h3>サーバー・ドメインもご相談OK</h3>
+        <p>サーバー・ドメインが未取得とのことですが、開業までの流れに合わせて取得・設定からまとめてサポートいたします。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="schedule">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">SCHEDULE</span>
+      <h2>12月中旬の開業に向けた進め方</h2>
+    </div>
+    <div class="timeline">
+      <div class="step">
+        <h4>ヒアリング</h4>
+        <p>施設の方針・ターゲット・参考サイトの好みを伺います</p>
+        <time>Week 1</time>
+      </div>
+      <div class="step">
+        <h4>構成・ワイヤー</h4>
+        <p>ページ構成と情報設計を一緒に固めます</p>
+        <time>Week 2</time>
+      </div>
+      <div class="step">
+        <h4>デザイン制作</h4>
+        <p>配色・写真の見せ方など、世界観を形にします</p>
+        <time>Week 3</time>
+      </div>
+      <div class="step">
+        <h4>実装・更新機能</h4>
+        <p>サイト構築と、自社更新できる管理画面を準備</p>
+        <time>Week 4</time>
+      </div>
+      <div class="step">
+        <h4>確認・納品</h4>
+        <p>最終確認を経て、12月中旬までに納品</p>
+        <time>Week 5</time>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="budget">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">BUDGET IMAGE</span>
+      <h2>今回のご予算感について</h2>
+    </div>
+    <div class="budget-card">
+      <p>ご提示いただいたご予算を踏まえたお見積り目安</p>
+      <div class="price">¥110,000<span>（税込目安）</span></div>
+      <p>構成設計〜デザイン〜実装〜自社更新機能の設定まで</p>
+      <p class="note">※チラシ制作は別途お見積りいたします。サーバー・ドメイン費用は実費にてご相談させてください。</p>
+    </div>
+  </div>
+</section>
+
+<section class="closing">
+  <div class="paw" style="top:12%; left:10%;"><span></span><span></span><span></span><span></span></div>
+  <div class="paw" style="bottom:14%; right:12%; transform:scale(1.2) rotate(10deg);"><span></span><span></span><span></span><span></span></div>
+  <div class="wrap">
+    <span class="hero-tag">NEXT ACTION</span>
+    <h2>まずは、構想をお聞かせください。</h2>
+    <p>
+      ワイヤーがない状態からで構いません。開業にかける想いや、理想の施設像を伺うところから始めさせてください。
+      Kairosが、老犬と家族にとっての「安心の居場所」をかたちにするお手伝いをいたします。
+    </p>
+    <a href="#" class="cta-btn">Kairosに相談してみる</a>
+    <div class="signoff">KAIROS — WEB & SYSTEM DEVELOPMENT TEAM</div>
+  </div>
+</section>
+
+<footer>
+  © Kairos Proposal for AT_DOG — ペットホテル・老犬施設ホームページ制作のご提案
+</footer>
+
+</body>
+</html>
